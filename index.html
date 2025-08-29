@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Teamleitung Kundenservice – Vorgehensplan & Wirkung</title>
+<meta name="description" content="Vorgehensplan, KPIs, Prozessverbesserungen und Teamkultur für die Teamleitung Kundenservice – daten- und wirkungsorientiert.">
+<style>
+:root{
+  --bg:#f7fafc; --card:#fff; --ink:#0b1020; --muted:#5a6b7b;
+  --brand:#0a6b74; --accent:#14b8a6; --line:#e3eaf2; --ink-2:#0e2238;
+  --good:#16a34a; --warn:#f59e0b; --bad:#ef4444; --shade:#eaf5f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;line-height:1.38}
+a{color:var(--brand);text-decoration:none}
+.wrapper{max-width:1100px;margin:0 auto;padding:28px}
+section{padding:44px 0}
+h1{font-size:44px;margin:0 0 6px;font-weight:900;letter-spacing:.2px}
+h2{font-size:28px;margin:0 0 14px;font-weight:800}
+.lead{color:var(--muted);margin:0 0 18px}
+.header{
+  padding:68px 0 54px;
+  background:linear-gradient(95deg,#e6f4f1 0%,#fff 60%);
+  border-bottom:1px solid var(--line);
+}
+.kicker{color:var(--muted);font-size:14px;margin:0 0 10px}
+.sub{color:var(--muted)}
+.btnbar{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.btn{background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}
+.btn.alt{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+.grid{display:grid;gap:24px;grid-template-columns:1.15fr 1fr}
+.grid-2{display:grid;gap:20px;grid-template-columns:1fr 1fr}
+.grid-3{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+@media (max-width:980px){.grid,.grid-2,.grid-3{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.soft{background:#ffffffcc;backdrop-filter:blur(4px)}
+.hr{border:none;border-top:1px dashed var(--line);margin:14px 0}
+.ul{margin:0;padding-left:20px}
+.ul li{margin:8px 0}
+.badge{display:inline-flex;align-items:center;gap:10px;font-weight:800;color:var(--brand)}
+.badge .dot{width:24px;height:24px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px var(--shade) inset}
+
+/* Timeline */
+.timeline{position:relative;margin:18px 0}
+.timeline .line{height:4px;background:var(--line);border-radius:6px;margin:40px 0}
+.steps{display:flex;justify-content:space-between}
+.step{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;width:150px}
+.circle{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:var(--shade);border:2px solid var(--line);font-weight:900}
+
+/* Bars & micro-charts */
+.kpi{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:14px}
+.sw{width:12px;height:12px;border-radius:3px;background:var(--accent);outline:1px solid #a6d9d3}
+.sw.alt{background:#aac4e6;outline:1px solid #aac4e6}
+.row{display:grid;grid-template-columns:140px 1fr;gap:10px;align-items:center;margin:10px 0}
+.bar{height:12px;border-radius:10px;background:#aac4e6;position:relative}
+.bar::after{content:"";position:absolute;inset:0;right:auto;width:var(--w,50%);background:var(--accent);border-radius:10px}
+
+/* Before/After */
+.split{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+.panel{border:1px solid var(--line);border-radius:12px;padding:14px}
+.panel h3{margin:2px 0 8px;font-size:18px}
+.flag{font-weight:800}
+.flag.bad{color:var(--bad)} .flag.good{color:var(--good)}
+
+/* OKR Table */
+.tbl{width:100%;border-collapse:collapse}
+.tbl th,.tbl td{border:1px solid var(--line);padding:10px;text-align:left}
+.tbl th{background:#f2f7f9}
+
+/* Compensation band */
+.band{height:16px;background:#e9eef5;border-radius:10px;position:relative;margin:10px 0 6px}
+.marker{position:absolute;top:-6px;height:28px;width:2px;background:var(--brand)}
+.band .range{position:absolute;top:0;bottom:0;background:#cfe1f1;border-radius:10px}
+
+/* Animations (IntersectionObserver) */
+.reveal{opacity:0;transform:translateY(12px);transition:all .6s ease}
+.reveal.show{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="wrapper">
+    <p class="kicker">Kundenservice · Führung · Prozesse · Digitalisierung</p>
+    <h1>Teamleitung Kundenservice – Vorgehensplan & Wirkung</h1>
+    <p class="sub">Ein pragmatischer, messbarer Fahrplan – vom ersten Tag bis zur etablierten Teamkultur.</p>
+    <div class="btnbar">
+      <a class="btn" href="#plan">30-60-90-Plan</a>
+      <a class="btn alt" href="#kpi">KPIs & Wirkung</a>
+      <a class="btn alt" href="#prozesse">Prozesse</a>
+      <a class="btn alt" href="#kultur">Teamkultur</a>
+      <a class="btn alt" href="#rahmen">Rolle & Rahmen</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrapper">
+
+  <!-- 1) 30-60-90 -->
+  <section id="plan" class="reveal">
+    <h2>30-60-90-Plan (erste 6 Monate)</h2>
+    <div class="timeline card soft">
+      <div class="line"></div>
+      <div class="steps">
+        <div class="step">
+          <div class="circle">1–6</div>
+          <div><strong>Wochen</strong></div>
+          <div class="sub">Einarbeitung & Beobachtung</div>
+        </div>
+        <div class="step">
+          <div class="circle">7–8</div>
+          <div><strong>Wochen</strong></div>
+          <div class="sub">Struktur & Prioritäten</div>
+        </div>
+        <div class="step">
+          <div class="circle">9–16</div>
+          <div><strong>Wochen</strong></div>
+          <div class="sub">Coaching & Entwicklung</div>
+        </div>
+        <div class="step">
+          <div class="circle">17–24</div>
+          <div><strong>Wochen</strong></div>
+          <div class="sub">Prozesse & Optimierung</div>
+        </div>
+        <div class="step">
+          <div class="circle">25+</div>
+          <div><strong>Wochen</strong></div>
+          <div class="sub">Kultur & Verstetigung</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Schwerpunkt: Führung & Alltag</h3>
+        <ul class="ul">
+          <li>Einzel-Check-ins mit jedem Mitarbeitenden (Stärken, Hürden, Ziele).</li>
+          <li>Daily-Huddles (10 Min) für Fokus & Blocker-Removal.</li>
+          <li>Qualitätsleitfaden + FAQ gemeinsam definieren.</li>
+          <li>Stellvertretung benennen & gezielt entwickeln.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Schwerpunkt: Zahlen & Systeme</h3>
+        <ul class="ul">
+          <li>ACD/CRM-Pfadreview → Berichte & Felder auf Teamnutzen trimmen.</li>
+          <li>Last-/Einsatzplanung nach Nachfrageprofil (Heatmap).</li>
+          <li>„Quick-Wins“ digital: Templating, Textbausteine, Self-Service-FAQ.</li>
+          <li>Monatliche KPI-Runden mit Visuals (leicht verständlich).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2) KPIs & Wirkung -->
+  <section id="kpi" class="reveal">
+    <h2>KPIs & Wirkung (Beispieldaten zur Zielrichtung)</h2>
+    <p class="lead">Zielbild nach 6 Monaten: Wartezeiten runter, Erstlösungsquote hoch, Kundenzufriedenheit stabil steigend.</p>
+
+    <div class="card">
+      <div class="kpi"><span class="sw"></span> Geplante Entwicklung (Beispielwerte)</div>
+      <div class="row"><div>Wartezeit</div><div class="bar" style="--w:68%"></div></div>
+      <div class="row"><div>Erstlösung</div><div class="bar" style="--w:84%"></div></div>
+      <div class="row"><div>Kundenzufriedenheit</div><div class="bar" style="--w:88%"></div></div>
+      <div class="row"><div>Reklamationsquote</div><div class="bar" style="--w:30%"></div></div>
+      <p class="sub">Hinweis: Visual dient der Zielrichtung; echte Werte kommen aus ACD/CRM-Reports.</p>
+    </div>
+
+    <div class="grid-2" style="margin-top:18px">
+      <div class="card">
+        <h3>OKR-Ausschnitt</h3>
+        <table class="tbl">
+          <tr><th>Objective</th><th>Key Results (Q)</th></tr>
+          <tr>
+            <td>Service spürbar beschleunigen</td>
+            <td>
+              <ul class="ul">
+                <li>⏱ Durchschnittliche Wartezeit −20 %</li>
+                <li>✅ Erstlösungsquote +10 pp</li>
+                <li>🎧 Eskalationen −25 %</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>Team befähigen</td>
+            <td>
+              <ul class="ul">
+                <li>🎓 2 Coachings/Monat</li>
+                <li>📘 Leitfaden v1.0 live</li>
+                <li>💬 Feedback-Zyklus 4-wöchentlich</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3>Kapazität & Einsatz (Beispiel)</h3>
+        <div class="kpi"><span class="sw alt"></span> Anrufaufkommen vs. Einsatzplanung</div>
+        <div class="row"><div>Morgens</div><div class="bar" style="--w:78%"></div></div>
+        <div class="row"><div>Mittags</div><div class="bar" style="--w:92%"></div></div>
+        <div class="row"><div>Nachmittags</div><div class="bar" style="--w:85%"></div></div>
+        <div class="row"><div>Abends</div><div class="bar" style="--w:62%"></div></div>
+        <p class="sub">Abgleich Last ↔ Besetzung senkt Wartezeiten ohne Mehrkosten.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) Prozesse -->
+  <section id="prozesse" class="reveal">
+    <h2>Prozesse – Vorher/Nachher</h2>
+    <div class="split">
+      <div class="panel">
+        <h3>Vorher <span class="flag bad">– Medienbrüche</span></h3>
+        <ul class="ul">
+          <li>Papierformulare, doppelte Eingaben</li>
+          <li>Intransparente Eskalationen</li>
+          <li>Wissensinseln, keine Standards</li>
+          <li>Fehlerquellen & Mehraufwand</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Nachher <span class="flag good">– Standard & digital</span></h3>
+        <ul class="ul">
+          <li>Klare Leitfäden & Templates</li>
+          <li>ACD/CRM-Pflege: Pflichtfelder & saubere Übergaben</li>
+          <li>Self-Service-FAQ & Textbausteine</li>
+          <li>Monatsreviews mit Kennzahlen & Maßnahmen</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:16px">
+      <div class="card">
+        <h3>Risiken & Gegenmaßnahmen</h3>
+        <table class="tbl">
+          <tr><th>Risiko</th><th>Gegenmaßnahme</th></tr>
+          <tr><td>Akzeptanz</td><td>Frühe Einbindung, Pilot, Feedback-Schleifen</td></tr>
+          <tr><td>Überlast</td><td>10-Min-Huddles, klare Priorisierung</td></tr>
+          <tr><td>Datenqualität</td><td>Pflichtfelder, QS-Stichproben</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3>Qualitäts-Leitbild</h3>
+        <ul class="ul">
+          <li>Klar, freundlich, lösungsorientiert</li>
+          <li>Standardisiert, aber menschlich</li>
+          <li>Transparenz bei Eskalationen</li>
+          <li>Kontinuierliche Verbesserung (Kaizen)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4) Teamkultur -->
+  <section id="kultur" class="reveal">
+    <h2>Teamkultur – was bleibt</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Feedback-Kultur</h3>
+        <p class="lead">Monatliche 1:1s · Peer-Learning · Lob sichtbar machen</p>
+      </div>
+      <div class="card">
+        <h3>Lernen & Entwicklung</h3>
+        <p class="lead">Kernskills trainieren · Mentoring · Stellvertretung aufbauen</p>
+      </div>
+      <div class="card">
+        <h3>Verlässlichkeit</h3>
+        <p class="lead">Transparente Ziele · Standards · faire Dienstplanung</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) Rolle & Rahmen (marktüblich, wertschätzend) -->
+  <section id="rahmen" class="reveal">
+    <h2>Rolle & Rahmen</h2>
+    <div class="card">
+      <p class="lead">Marktübliches Jahresgehalt Teamleitung Kundenservice (Beispielband)</p>
+      <div class="band">
+        <div class="range" style="left:0%;right:0%"></div>
+        <!-- Marker bei 55k in einem 50-60k Band -->
+        <div class="marker" style="left:50%"></div>
+      </div>
+      <div class="grid-2">
+        <div>
+          <p><strong>Orientierung:</strong> Bandbreite 50 k – 60 k p.a. (je nach Teamgröße, Standort, Verantwortung).</p>
+          <p><strong>Passender Fokuspunkt:</strong> 55 k p.a. bei Vollverantwortung für Team, KPIs & Prozesse.</p>
+        </div>
+        <div>
+          <p><strong>Mehrwert, der das Band trägt:</strong></p>
+          <ul class="ul">
+            <li>Messbare Wartezeit- und Reklamationsreduktion</li>
+            <li>Steigende Erstlösungen & Kundenzufriedenheit</li>
+            <li>Struktur, Coaching, nachhaltige Kultur</li>
+          </ul>
+        </div>
+      </div>
+      <p class="sub">Details werden selbstverständlich im Gespräch abgestimmt.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+},{threshold:.2});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
