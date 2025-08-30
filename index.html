@@ -32,8 +32,21 @@
     header h1{margin:0;font-size:24px;letter-spacing:.2px}
     header .sub{opacity:.92;font-size:13.5px}
     .spacer{flex:1}
-    .btn{appearance:none;border:0;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;padding:9px 14px;font-weight:600;cursor:pointer}
-    .btn:hover{background:rgba(255,255,255,.22)}
+    .btn{
+      appearance:none;border:0;border-radius:999px;
+      padding:9px 14px;font-weight:700;cursor:pointer;
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      color:#fff; box-shadow:var(--shadow);
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .btn:focus-visible{outline:3px solid var(--accent); outline-offset:2px}
+
+    /* Ghost-Variante nur auf dunklem Header */
+    .btn.ghost{
+      background:rgba(255,255,255,.14);
+      color:#fff; box-shadow:none;
+    }
+    .btn.ghost:hover{background:rgba(255,255,255,.22)}
 
     /* Tabs */
     .tabs{display:flex;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px;box-shadow:var(--shadow);margin-top:16px}
@@ -67,8 +80,7 @@
     .progress{height:6px;background:#d1fae5}
     .progress .bar{height:100%;width:0;background:linear-gradient(90deg,var(--primary),var(--secondary))}
 
-    .nav{display:flex;justify-content:space-between;gap:8px;margin-top:10px}
-    .nav button{flex:1}
+    .nav{display:flex;justify-content:center;gap:8px;margin-top:10px}
 
     /* To‑do */
     .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -105,9 +117,9 @@
         <div class="sub">Lukas Bach · Key‑Account‑Mindset · Prozessoptimierung · Digitalisierung</div>
       </div>
       <div class="spacer"></div>
-      <button class="btn" id="btnViewSlides" title="Präsentation anzeigen (P)">🖥️ Präsentation</button>
-      <button class="btn" id="btnViewTodo" title="To‑do/Fahrplan anzeigen (T)">📋 Fahrplan</button>
-      <button class="btn btn-print" onclick="window.print()" title="Als PDF drucken">🖨️ PDF</button>
+      <button class="btn ghost" id="btnViewSlides" title="Präsentation anzeigen (P)">🖥️ Präsentation</button>
+      <button class="btn ghost" id="btnViewTodo" title="To‑do/Fahrplan anzeigen (T)">📋 Fahrplan</button>
+      <button class="btn ghost btn-print" onclick="window.print()" title="Als PDF drucken">🖨️ PDF</button>
     </header>
 
     <!-- Tabs (visual state only; buttons above switch programmatically) -->
