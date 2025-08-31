@@ -106,10 +106,7 @@
     .slide ul{margin-top:10px;font-size:17px}
 
     .progress{height:6px;background:#d1fae5}
-    .progress .bar{
-      height:100%;width:0;
-      background:linear-gradient(90deg,var(--primary),var(--secondary))
-    }
+    .progress .bar{height:100%;width:0;background:linear-gradient(90deg,var(--primary),var(--secondary))}
 
     .nav{display:flex;justify-content:space-between;gap:8px;margin-top:10px}
     .nav button{flex:1}
@@ -121,30 +118,18 @@
     .phase{border-left:6px solid var(--primary);padding-left:10px}
     .kpis .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
     @media (max-width:700px){.kpis .grid{grid-template-columns:1fr}}
-    .kpis input{
-      width:100%;padding:10px;font-size:16px;
-      border:1px solid var(--line);border-radius:10px
-    }
+    .kpis input{width:100%;padding:10px;font-size:16px;border:1px solid var(--line);border-radius:10px}
 
     .pill{
-      display:inline-block;background:#ecfdf5;
-      border:1px solid #d1fae5;color:#065f46;
+      display:inline-block;background:#ecfdf5;border:1px solid #d1fae5;color:#065f46;
       padding:5px 12px;border-radius:999px;font-size:14px
     }
 
-    /* Accordeon/Details */
-    details.acc{border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:10px}
-    details.acc summary{cursor:pointer;font-weight:600;color:var(--primary)}
+    details{background:transparent;border:1px solid var(--line);border-radius:12px;padding:10px;margin:10px 0}
+    details > summary{cursor:pointer;font-weight:600;color:var(--primary)}
 
-    /* Tables */
-    table{border-collapse:collapse}
-    th,td{border-bottom:1px solid var(--line);padding:6px;text-align:left}
-
-    /* Simple stats boxes */
-    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
-    .stat{background:#f6faf9;border:1px dashed var(--line);border-radius:12px;padding:12px}
-    .stat .k{font-size:12px;color:var(--muted)}
-    .stat .v{font-weight:700}
+    table.matrix{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+    .matrix th,.matrix td{padding:6px;border-bottom:1px solid var(--line);text-align:left}
 
     /* Dark Mode */
     @media (prefers-color-scheme: dark){
@@ -153,7 +138,6 @@
         --text:#e7fffb;--muted:#9fb3bd;--accent:#2dd4bf
       }
       .pill{background:#0c2e2a;border-color:#155e57;color:#bfffea}
-      .progress{background:#0f2a26}
     }
 
     /* Print */
@@ -174,17 +158,15 @@
         <div class="sub">Lukas Bach · Customer Success Mindset · Prozessoptimierung · Digitalisierung</div>
       </div>
       <div class="spacer"></div>
-      <button class="btn ghost" id="btnViewSlides"  title="Präsentation anzeigen (P)">🖥️ Präsentation</button>
-      <button class="btn ghost" id="btnViewTodo"    title="To-do/Fahrplan anzeigen (T)">📋 Fahrplan</button>
-      <button class="btn ghost" id="btnViewTraining" title="Schulung anzeigen (S)">🎧 Schulung</button>
+      <button class="btn ghost" id="btnViewSlides" title="Präsentation anzeigen (P)">🖥️ Präsentation</button>
+      <button class="btn ghost" id="btnViewTodo" title="To-do/Fahrplan anzeigen (T)">📋 Fahrplan</button>
       <button class="btn ghost btn-print" onclick="window.print()" title="Als PDF drucken">🖨️ PDF</button>
     </header>
    
-    <!-- Tabs (visual state only; buttons oben schalten per JS) -->
+    <!-- Tabs (visual state only; buttons above switch programmatically) -->
     <div class="tabs" aria-label="Ansichten">
       <div class="tab"><input type="radio" name="view" id="tab1" checked><label for="tab1">🖥️ Präsentation</label></div>
       <div class="tab"><input type="radio" name="view" id="tab2"><label for="tab2">📋 Fahrplan</label></div>
-      <div class="tab"><input type="radio" name="view" id="tab3"><label for="tab3">🎧 Schulung</label></div>
     </div>
 
     <!-- Panel: Präsentation / Slides -->
@@ -259,6 +241,33 @@
                 <li>Vorlagen/Checklisten: Einheitliche Qualität, schnelleres Onboarding.</li>
               </ul>
               <p class="small">Prinzip: „Einfach starten, eng begleiten, Feedback integrieren, dann skalieren.“</p>
+            </div>
+          </article>
+
+          <!-- NEU: De-eskalation Slide -->
+          <article class="slide" data-title="De-eskalation (LEAP)">
+            <div class="inner">
+              <h2>De-eskalation (LEAP)</h2>
+              <ul>
+                <li><strong>Labeln:</strong> „Ich sehe, dass Sie verärgert sind.“</li>
+                <li><strong>Empathie + Grenzen:</strong> „Ich kläre das fair – ohne Rechtsberatung, mit vollständiger Prüfung.“</li>
+                <li><strong>Ankern/Ask:</strong> Kennzeichen, Datum, Standort, Belege (Parkschein/App, Einkaufs-/Arztbeleg, Fotos).</li>
+                <li><strong>Proposal:</strong> Prüfung eröffnen, Frist &amp; Rückkanal nennen, Status transparent halten.</li>
+              </ul>
+              <p class="small">Top-Fälle: Markt-Kunde, unklare Beschilderung, App/Automat defekt, Zeit strittig, Halter≠Fahrer, Datenschutz.</p>
+            </div>
+          </article>
+
+          <!-- NEU: 3-Modul-Training Slide -->
+          <article class="slide" data-title="3-Modul-Training">
+            <div class="inner">
+              <h2>3-Modul-Training – Frontline &amp; Qualität</h2>
+              <ul>
+                <li><strong>Modul 1 – Gespräch &amp; De-eskalation:</strong> Leitfaden, Rollenspiele, Telefon/Email-Muster.</li>
+                <li><strong>Modul 2 – Fakten &amp; Nachweise:</strong> Beschilderungs-/Fotostandards, Technik-Check, Dokumentation.</li>
+                <li><strong>Modul 3 – Entscheidung &amp; Kulanz:</strong> Kulanzmatrix, Eskalationswege, KPIs &amp; Review.</li>
+              </ul>
+              <p class="small">Erfolgsmessung: −25 % Eskalationsquote, 100 % Beleg-Check dokumentiert, Erstantwort &lt;24 h.</p>
             </div>
           </article>
 
@@ -340,14 +349,10 @@
         </div>
       </div>
 
-      <!-- 🔶 NEU: Eskalation – Matrix & Gesprächsbausteine -->
+      <!-- NEU: Eskalationsmatrix & De-eskalation -->
       <div class="card" style="margin-top:14px">
-        <h2>Eskalationsmatrix & De-eskalation (Frontline)</h2>
-        <div class="stats" role="list">
-          <div class="stat"><div class="k">Ziel-KPI</div><div class="v">−25 % Eskalationsquote</div></div>
-          <div class="stat"><div class="k">SLA</div><div class="v">Erstantwort &lt; 24 h</div></div>
-          <div class="stat"><div class="k">Qualität</div><div class="v">100 % Beleg-Check dokumentiert</div></div>
-        </div>
+        <h2>Eskalationsmatrix &amp; De-eskalation</h2>
+        <p class="small">Frontline-Leitfaden • Ziel: −25 % Eskalationsquote · Erstantwort &lt; 24 h · 100 % Beleg-Check dokumentiert</p>
 
         <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:16px">
           <div>
@@ -357,41 +362,130 @@
               <li>Beschilderung unklar</li>
               <li>Automat/App defekt</li>
               <li>Zeiten strittig (Ein/Ausfahrt)</li>
-              <li>Geringe Überschreitung</li>
-              <li>Halter ≠ Fahrer</li>
-              <li>Datenschutz-Beschwerde</li>
+              <li>Geringe Überschreitung (≤10 Min.)</li>
+              <li>Halter ≠ Fahrer (Hinweis ohne Rechtsberatung)</li>
+              <li>Datenschutzbeschwerde</li>
               <li>Inkasso/Fristen</li>
             </ul>
 
             <h3 style="margin-top:12px">Kulanzmatrix</h3>
-            <table style="width:100%;font-size:14px">
+            <table class="matrix">
               <thead><tr><th>Fall</th><th>Maßnahme</th></tr></thead>
               <tbody>
-                <tr><td>Erstverstoß ≤ 10 Min.</td><td>Reduktion/Ermahnung</td></tr>
+                <tr><td>Erstverstoß ≤10 Min.</td><td>Reduktion/Ermahnung</td></tr>
                 <tr><td>Technikstörung belegt</td><td>Storno/Reduktion</td></tr>
                 <tr><td>Beschilderung zweifelhaft</td><td>QS-Prüfung + Kulanz</td></tr>
                 <tr><td>Wiederholungsfall klar</td><td>Bestätigung</td></tr>
-                <tr><td>Sensible Fälle (Notfall/Behinderung)</td><td>Einzelfall-Kulanz prüfen</td></tr>
+                <tr><td>Sensible Fälle (Notfall/Behinderung)</td><td>Einzelfall-Kulanz</td></tr>
               </tbody>
             </table>
           </div>
 
           <div>
             <h3>Gesprächsbausteine (LEAP)</h3>
-            <details class="acc"><summary>1) Anerkennen & Struktur</summary>
-              <div class="small" style="margin-top:8px">„Ich verstehe, dass das ärgerlich ist. Damit ich konkret helfen kann, notiere ich Kennzeichen, Datum und Standort und prüfe Ihre Nachweise.“</div>
+
+            <details>
+              <summary>1) Anerkennen &amp; Struktur</summary>
+              <div class="small" style="margin-top:8px">
+                „Ich verstehe, dass das ärgerlich ist. Damit ich helfen kann, notiere ich Kennzeichen, Datum und Standort und prüfe Ihre Nachweise.“
+              </div>
             </details>
-            <details class="acc"><summary>2) Grundlage erklären</summary>
-              <div class="small" style="margin-top:8px">„Die Forderung basiert auf den vor Ort ausgehängten Bedingungen und den Zeit-/Fotodaten. Ich gleiche das jetzt mit Ihren Angaben ab.“</div>
+
+            <details>
+              <summary>2) Grundlage erklären</summary>
+              <div class="small" style="margin-top:8px">
+                „Die Forderung basiert auf den vor Ort ausgehängten Bedingungen und den Zeit-/Fotodaten. Ich gleiche das jetzt mit Ihren Angaben ab.“
+              </div>
             </details>
-            <details class="acc"><summary>3) Optionen anbieten</summary>
-              <div class="small" style="margin-top:8px">„Ich eröffne eine formelle Prüfung. Senden Sie bitte Belege bis [Datum]. Zahlung unter Vorbehalt ist möglich – die Prüfung läuft dennoch.“</div>
+
+            <details>
+              <summary>3) Optionen anbieten</summary>
+              <div class="small" style="margin-top:8px">
+                „Ich eröffne eine formelle Prüfung. Senden Sie bitte Belege bis [Datum]. Zahlung <em>unter Vorbehalt</em> ist möglich – die Prüfung läuft dennoch.“
+              </div>
             </details>
-            <details class="acc"><summary>4) Grenzen & Ton</summary>
-              <div class="small" style="margin-top:8px">„Ich möchte Ihnen gern helfen. Wenn es beleidigend wird, kann ich das Gespräch nicht fortsetzen. Sprechen wir sachlich weiter – ja?“</div>
+
+            <details>
+              <summary>4) Grenzen &amp; Ton</summary>
+              <div class="small" style="margin-top:8px">
+                „Ich möchte Ihnen gern helfen. Wenn es beleidigend wird, kann ich das Gespräch nicht fortsetzen. Sprechen wir sachlich weiter – ja?“
+              </div>
             </details>
           </div>
         </div>
+
+        <details>
+          <summary>Telefon-Skript (90-Sekunden)</summary>
+          <div class="small" style="margin-top:8px">
+            „Ich verstehe Ihren Ärger. Damit ich konkret helfen kann, notiere ich Kennzeichen, Datum und Standort. Unsere Forderung stützt sich auf die Beschilderung vor Ort sowie Zeit-/Fotodaten. Ich starte für Sie jetzt die Prüfung und hinterlege Ihren Widerspruch. Wenn Sie Belege haben (Parkschein/App, Einkaufs- oder Arztbeleg), senden Sie diese bitte bis [Datum] mit Aktenzeichen im Betreff. Ich melde mich, sobald das Ergebnis vorliegt.“
+          </div>
+        </details>
+
+        <details>
+          <summary>E-Mail-Musterantwort (kurz)</summary>
+          <div class="small" style="margin-top:8px">
+            Betreff: Ihr Vorgang [Aktenzeichen] – Prüfung eingeleitet<br><br>
+            Guten Tag [Name],<br>
+            ich habe Ihren Widerspruch zum Vorgang [Aktenzeichen] erfasst und eine Überprüfung veranlasst.<br>
+            Bitte senden Sie – sofern vorhanden – Nachweise (Parkschein/App-Beleg, Einkaufs-/Arztbestätigung) bis [Datum].<br>
+            Grundlage sind die Parkbedingungen vor Ort sowie Zeit-/Fotodaten; wir gleichen diese mit Ihren Angaben ab.<br>
+            Sie erhalten das Ergebnis schriftlich. Freundliche Grüße<br>
+            [Name] – Kundenservice
+          </div>
+        </details>
+      </div>
+
+      <!-- NEU: 3-Modul-Schulung -->
+      <div class="card" style="margin-top:14px">
+        <h2>Schulung: 3-Modul-Training De-eskalation &amp; Qualität</h2>
+        <p class="small">Ziel: Sicherer Auftritt am Telefon &amp; per E-Mail, saubere Faktenlage, nachvollziehbare Entscheidungen.</p>
+
+        <h3>Struktur &amp; Ziele</h3>
+        <ul>
+          <li><strong>Modul&nbsp;1 – Gespräch &amp; De-eskalation (2 h):</strong> Leitfaden (LEAP), Einwandbehandlung, Ton &amp; Grenzen, Rollenspiele.</li>
+          <li><strong>Modul&nbsp;2 – Fakten &amp; Nachweise (2 h):</strong> Beschilderungs-/Fotostandards, Technik-Check (App/Automat), Dokumentation.</li>
+          <li><strong>Modul&nbsp;3 – Entscheidung &amp; Kulanz (2 h):</strong> Kulanzmatrix, Eskalationswege, SLA/KPI-Tracking, Qualitätsreview.</li>
+        </ul>
+
+        <details>
+          <summary>Modul&nbsp;1 – Inhalte &amp; Übungen</summary>
+          <ul class="small">
+            <li>Leitfaden kurz: Anerkennen → Struktur → Fakten → Optionen → Frist</li>
+            <li>Rollenspiele: „Kunde war im Markt“, „App defekt“, „Halter≠Fahrer“</li>
+            <li>Check: Wann Gespräch beenden? (Beleidigungen/Drohungen)</li>
+            <li>Artefakte: Telefonskript, 5 Einwand-Bausteine, E-Mail-Snippets</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>Modul&nbsp;2 – Inhalte &amp; Übungen</summary>
+          <ul class="small">
+            <li>Fotostandard: Übersichtsfoto Einfahrt, Nahaufnahme Aushang, Blickrichtung, Tageslicht/Blitz</li>
+            <li>Technik-Protokoll: App/Automat-Status, Zeit-Sync, Alternativzahlung</li>
+            <li>Dokustandards: Aktenzeichen, Zeitfenster, Nachweis-Liste, Entscheidung</li>
+            <li>Artefakte: Checkliste „Fakten sichern“, Fotoguide Aushänge</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>Modul&nbsp;3 – Inhalte &amp; Übungen</summary>
+          <ul class="small">
+            <li>Kulanzmatrix anwenden (Erstverstoß/≤10 Min., Technikstörung, Beschilderung, Wiederholung)</li>
+            <li>Eskalationswege: Frontline → Teamlead → QS/Datenschutz → Auftraggeber</li>
+            <li>SLA/KPI: Erstantwort &lt;24 h, Quote mit Beleg-Check 100 %, Eskalationsquote −25 %</li>
+            <li>Artefakte: Entscheidungsprotokoll, Monatsreport (1-Pager)</li>
+          </ul>
+        </details>
+
+        <h3 style="margin-top:12px">Aufgaben (Häkchen setzt Fortschritt)</h3>
+        <ul>
+          <li><label><input type="checkbox" data-id="t1-playbook"> Playbook finalisieren (Skript, E-Mail-Muster, Einwand-Bausteine)</label></li>
+          <li><label><input type="checkbox" data-id="t2-fotostd"> Fotostandard &amp; Beschilderungs-Check veröffentlichen</label></li>
+          <li><label><input type="checkbox" data-id="t3-kulanz"> Kulanzmatrix abstimmen &amp; freigeben</label></li>
+          <li><label><input type="checkbox" data-id="t4-shadow"> Shadowing &amp; Coaching-Slots (2×/MA) einplanen</label></li>
+          <li><label><input type="checkbox" data-id="t5-kpi"> KPI-Dashboard anlegen (Eskalationsquote, Erstantwort, Beleg-Check)</label></li>
+          <li><label><input type="checkbox" data-id="t6-review"> Monatsreview &amp; Lessons Learned Kalender-Invite</label></li>
+        </ul>
       </div>
 
       <div class="card" style="margin-top:14px">
@@ -404,105 +498,6 @@
       </div>
     </section>
 
-    <!-- 🔶 NEU: Schulung (3-Module-Training) -->
-    <section class="panel" id="panelTraining" aria-labelledby="tab3">
-      <div class="card">
-        <h2>Schulung – 3-Module-Training (Frontline & Teamleitung)</h2>
-        <p class="small">Format: 3&nbsp;×&nbsp;90 Min. (Live) · optional 30-Min. Refresh · Ziel-KPIs: Erstkontakt-Lösung ↑, Eskalationsquote ↓, Dokumentationsqualität ↑</p>
-        <div class="stats" role="list">
-          <div class="stat"><div class="k">Ziel</div><div class="v">Sicher auftreten, sauber prüfen</div></div>
-          <div class="stat"><div class="k">Messung</div><div class="v">CSAT/NPS · Bearbeitungszeit</div></div>
-          <div class="stat"><div class="k">Ressourcen</div><div class="v">Leitfäden, Vorlagen, Matrix</div></div>
-        </div>
-      </div>
-
-      <!-- Modul 1 -->
-      <div class="card" style="margin-top:14px">
-        <h2>Modul 1 – Gesprächsführung & De-eskalation (LEAP)</h2>
-        <h3>Lernziele</h3>
-        <ul>
-          <li>Emotionen anerkennen, Fakten sichern, klare Next Steps setzen</li>
-          <li>Telefon-Skript &amp; 90-Sek. Kurzform sicher anwenden</li>
-          <li>Gesprächsabbruch korrekt (Grenzen, Dokumentation)</li>
-        </ul>
-        <h3>Übung &amp; Checkliste</h3>
-        <ul>
-          <li><label><input type="checkbox" data-id="tr1-skript"> 90-Sek.-Skript flüssig sprechen</label></li>
-          <li><label><input type="checkbox" data-id="tr1-leap"> LEAP-Schritte in 3 Szenen durchspielen</label></li>
-          <li><label><input type="checkbox" data-id="tr1-abbruch"> Abbruchformulierung sachlich trainieren</label></li>
-        </ul>
-        <details class="acc" style="margin-top:10px"><summary>Telefon-Skript (Kurz)</summary>
-          <div class="small" style="margin-top:8px">
-            „Ich verstehe, dass Sie verärgert sind. Damit ich helfen kann, notiere ich Kennzeichen, Datum, Standort.
-            Unsere Forderung stützt sich auf die Aushänge vor Ort und Zeit-/Fotodaten. Ich starte für Sie sofort eine Prüfung und hinterlege Ihren Widerspruch.
-            Bitte senden Sie Belege (Parkschein/App, Einkaufs- oder Arztbeleg) bis [Datum]. Wir melden uns mit dem Ergebnis.“
-          </div>
-        </details>
-      </div>
-
-      <!-- Modul 2 -->
-      <div class="card" style="margin-top:14px">
-        <h2>Modul 2 – Beleg- & Beschilderungs-Check</h2>
-        <h3>Lernziele</h3>
-        <ul>
-          <li>Belege bewerten (Parkschein/App, Einkauf/Arzt, Fotos)</li>
-          <li>Beschilderung prüfen (Sichtbarkeit, Verständlichkeit, Standort)</li>
-          <li>Technikstatus &amp; Logs (Automat/App) berücksichtigen</li>
-        </ul>
-        <h3>Checkliste</h3>
-        <ul>
-          <li><label><input type="checkbox" data-id="tr2-fotos"> Foto-Standards (Übersicht, Nahaufnahme, Ein-/Ausfahrt)</label></li>
-          <li><label><input type="checkbox" data-id="tr2-logs"> Techniklog/App-Status abrufen und beilegen</label></li>
-          <li><label><input type="checkbox" data-id="tr2-dsb"> Datenschutz-Hinweis prüfen &amp; dokumentieren</label></li>
-        </ul>
-        <details class="acc" style="margin-top:10px"><summary>Mini-Vorlagen (Notizfelder)</summary>
-          <div class="small" style="margin-top:8px">
-            <ul>
-              <li><strong>Beschilderung:</strong> Sichtbar (Ja/Nein), Lesbar (Ja/Nein), Anzahl Schilder: __, Foto-IDs: __</li>
-              <li><strong>Technik:</strong> Automat/App Status am [Datum/Zeit]: __, Ticket-Nr.: __</li>
-              <li><strong>Belege Kunde:</strong> Art/Nummer/Datum: __, Plausibel (Ja/Nein)</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-
-      <!-- Modul 3 -->
-      <div class="card" style="margin-top:14px">
-        <h2>Modul 3 – Kulanzmatrix & Eskalationswege</h2>
-        <h3>Lernziele</h3>
-        <ul>
-          <li>Kulanzmatrix sicher anwenden (Erstverstoß, Technik, Beschilderung, Wiederholung)</li>
-          <li>Saubere Dokumentation &amp; Entscheidungstexte</li>
-          <li>Saubere Übergabe an QS/Legal/Inkasso</li>
-        </ul>
-        <h3>Checkliste</h3>
-        <ul>
-          <li><label><input type="checkbox" data-id="tr3-matrix"> Entscheidung anhand Matrix begründen</label></li>
-          <li><label><input type="checkbox" data-id="tr3-template"> Textbaustein E-Mail/Widerspruch einsetzen</label></li>
-          <li><label><input type="checkbox" data-id="tr3-handover"> Handover an QS inkl. Fotos/Logs</label></li>
-        </ul>
-        <details class="acc" style="margin-top:10px"><summary>E-Mail-Muster (Ergebnis der Prüfung)</summary>
-          <div class="small" style="margin-top:8px">
-            Betreff: Ihr Vorgang [Aktenzeichen] – Ergebnis der Prüfung<br><br>
-            Guten Tag Frau/Herr [Name],<br>
-            vielen Dank für Ihre Unterlagen. Wir haben die Beschilderung vor Ort, die Zeit-/Fotodaten sowie Ihre Nachweise geprüft.
-            Ergebnis: [Storno/Reduktion/Bestätigung] mit folgender Begründung: [Kurzbegründung].<br>
-            Bei Rückfragen sind wir gern für Sie da.<br>
-            Freundliche Grüße – [Name/Team]
-          </div>
-        </details>
-      </div>
-
-      <div class="card" style="margin-top:14px">
-        <h2>Erfolgsmessung & Follow-up</h2>
-        <ul>
-          <li>Nach 30/60/90 Tagen: Review von Eskalationsquote, Bearbeitungszeit, CSAT/NPS</li>
-          <li>Top-3 Einwände aktualisieren &amp; Bausteine schärfen</li>
-          <li>Best-Practice-Board mit Beispielen (vor/nach Text, Entscheidung, Belege)</li>
-        </ul>
-      </div>
-    </section>
-
     <footer class="small" style="opacity:.75;margin:14px 4px 40px">© Lukas Bach · <a href="https://lukasbach585-boop.github.io/Lebenslauf." target="_blank" rel="noopener">Online-Lebenslauf</a></footer>
   </div>
 
@@ -512,44 +507,29 @@
     const $$ = (sel, el=document) => Array.from(el.querySelectorAll(sel));
 
     // --- View switching
-    const panelSlides   = $('#panelSlides');
-    const panelTodo     = $('#panelTodo');
-    const panelTraining = $('#panelTraining');
-
+    const panelSlides = $('#panelSlides');
+    const panelTodo = $('#panelTodo');
     const tab1 = $('#tab1');
     const tab2 = $('#tab2');
-    const tab3 = $('#tab3');
-
-    const btnViewSlides   = $('#btnViewSlides');
-    const btnViewTodo     = $('#btnViewTodo');
-    const btnViewTraining = $('#btnViewTraining');
+    const btnViewSlides = $('#btnViewSlides');
+    const btnViewTodo = $('#btnViewTodo');
 
     function showSlides(){
       panelSlides.classList.add('active');
       panelTodo.classList.remove('active');
-      panelTraining.classList.remove('active');
       tab1.checked = true;
       updateProgress();
     }
     function showTodo(){
       panelTodo.classList.add('active');
       panelSlides.classList.remove('active');
-      panelTraining.classList.remove('active');
       tab2.checked = true;
-    }
-    function showTraining(){
-      panelTraining.classList.add('active');
-      panelSlides.classList.remove('active');
-      panelTodo.classList.remove('active');
-      tab3.checked = true;
     }
 
     btnViewSlides.addEventListener('click', showSlides);
     btnViewTodo.addEventListener('click', showTodo);
-    btnViewTraining.addEventListener('click', showTraining);
     tab1.addEventListener('change', showSlides);
     tab2.addEventListener('change', showTodo);
-    tab3.addEventListener('change', showTraining);
 
     // --- Slides navigation
     const slides = $$('.slide');
@@ -575,30 +555,28 @@
       if(e.key==='ArrowLeft'  || e.key.toLowerCase()==='a'){ index=(index-1+slides.length)%slides.length; render(); }
       if(e.key.toLowerCase()==='p'){ showSlides(); }
       if(e.key.toLowerCase()==='t'){ showTodo(); }
-      if(e.key.toLowerCase()==='s'){ showTraining(); }
     });
 
-    // --- To-do & Training persistence (localStorage)
-    const STORE_TODO = 'rampup_todo_v2';
+    // --- To-do persistence (localStorage)
+    const STORE_TODO = 'rampup_todo_v1';
     const STORE_KPI  = 'rampup_kpi_v1';
 
     function saveTodos(){
       const map = {};
-      // Sammle Checkboxes aus Fahrplan UND Schulung
-      $$('#panelTodo input[type="checkbox"], #panelTraining input[type="checkbox"]').forEach(cb=> map[cb.dataset.id] = cb.checked);
+      $$('#panelTodo input[type="checkbox"]').forEach(cb=> map[cb.dataset.id] = cb.checked);
       localStorage.setItem(STORE_TODO, JSON.stringify(map));
     }
     function loadTodos(){
       const raw = localStorage.getItem(STORE_TODO);
       if(!raw) return;
       const map = JSON.parse(raw);
-      $$('#panelTodo input[type="checkbox"], #panelTraining input[type="checkbox"]').forEach(cb=> cb.checked = !!map[cb.dataset.id]);
+      $$('#panelTodo input[type="checkbox"]').forEach(cb=> cb.checked = !!map[cb.dataset.id]);
     }
-    $$('#panelTodo input[type="checkbox"], #panelTraining input[type="checkbox"]').forEach(cb=> cb.addEventListener('change', saveTodos));
+    $$('#panelTodo input[type="checkbox"]').forEach(cb=> cb.addEventListener('change', saveTodos));
 
     $('#resetTodo').addEventListener('click', ()=>{
-      if(confirm('Alle Häkchen der Checklisten (Fahrplan & Schulung) zurücksetzen?')){
-        $$('#panelTodo input[type="checkbox"], #panelTraining input[type="checkbox"]').forEach(cb=> cb.checked=false);
+      if(confirm('Alle Häkchen der Checklisten zurücksetzen?')){
+        $$('#panelTodo input[type="checkbox"]').forEach(cb=> cb.checked=false);
         saveTodos();
       }
     });
@@ -619,4 +597,21 @@
       $('#kpi-a').value = d.a || '';
       $('#kpi-b').value = d.b || '';
       $('#kpi-c').value = d.c || '';
-      $('#
+      $('#kpi-d').value = d.d || '';
+    }
+    ['kpi-a','kpi-b','kpi-c','kpi-d'].forEach(id=> $('#'+id).addEventListener('input', saveKpis));
+
+    $('#resetKpi').addEventListener('click', ()=>{
+      if(confirm('Alle KPI-Eingaben zurücksetzen?')){
+        ['kpi-a','kpi-b','kpi-c','kpi-d'].forEach(id=> $('#'+id).value='');
+        saveKpis();
+      }
+    });
+
+    // Init
+    loadTodos();
+    loadKpis();
+    render();
+  </script>
+</body>
+</html>
